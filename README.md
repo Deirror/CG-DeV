@@ -1,4 +1,4 @@
-# OpenGL
+# OpenGL Collection
 
 This repo contains some computer graphics development(CGD) projects, using OpenGL
 
