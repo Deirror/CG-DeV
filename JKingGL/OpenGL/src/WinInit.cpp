@@ -13,7 +13,7 @@ GLFWwindow* glfwWinInit()
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-	window = glfwCreateWindow(960, 540, "Hello World", NULL, NULL);
+	window = glfwCreateWindow(WIDTH, HEIGHT, "JK Window", NULL, NULL);
 	if (!window)
 	{
 		glfwTerminate();
@@ -22,6 +22,14 @@ GLFWwindow* glfwWinInit()
 
 	glfwMakeContextCurrent(window);
 
+	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 
 	return window;
 }
+
+void framebuffer_size_callback(GLFWwindow* window, int width, int height)
+{
+	glViewport(0, 0, width, height);
+}
+
+
