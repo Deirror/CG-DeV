@@ -21,7 +21,7 @@ Shaders
 
 - Vertex shader:
   -  Receives per-vertex data (in from buffer)
-  - Applies transforms → gl_Position
+  - Applies transforms -> gl_Position
   - Outputs extra data (out) for the fragment shader
 
 - Fragment shader:
