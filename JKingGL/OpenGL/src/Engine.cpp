@@ -26,11 +26,11 @@ void Engine::run(GLFWwindow* window)
 	// Main Code
 	float verts[] =
 	{
-		0.0f, 0.0f,
-		960.0f, 0.0f,
-		480.0f, 270.0f,
-		0.0f, 540.0f,
-		960.0f, 540.0f
+		0.0f, 0.0f, 1.0f, 0.0f, 0.0f,
+		960.0f, 0.0f, 0.0f, 1.0f, 0.0f,
+		480.0f, 270.0f ,0.0f, 0.0f, 1.0f,
+		0.0f, 540.0f, 1.0f, 0.0f, 0.0f,
+		960.0f, 540.0f, 0.0f, 1.0f, 0.0f,
 	};
 
 	unsigned int indices[] =
@@ -45,10 +45,11 @@ void Engine::run(GLFWwindow* window)
 
 	glm::mat4 mvp = proj * view * model;
 
-	VertexBuffer vb(verts, 2 * sizeof(float) * 5);
+	VertexBuffer vb(verts, 5 * sizeof(float) * 5);
 
 	VertexBufferLayout layout;
 	layout.Push<float>(2);
+	layout.Push<float>(3);
 
 	VertexArray va;
 	va.AddVertexBuffer(vb, layout);
@@ -56,7 +57,7 @@ void Engine::run(GLFWwindow* window)
 	IndexBuffer ib(indices, 6);
 
 	Shader shader("res/shaders/Basic.shader");
-	shader.SetUniform4f("u_Color", 1.0f, 0.0f, 1.0f, 1.0f);
+	shader.SetUniform4f("u_Color", 1.0f, 1.0f, 1.0f, 1.0f);
 	shader.SetUniformMat4f("u_MVP", mvp);
 
 	Renderer renderer;

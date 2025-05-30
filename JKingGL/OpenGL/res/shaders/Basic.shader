@@ -2,14 +2,16 @@
 #version 330 core
 
 layout(location = 0) in vec2 position;
+layout(location = 1) in vec4 color;
 
-out vec2 v_Coord;
+out vec4 v_Color;
 
 uniform mat4 u_MVP;
 
 void main()
 {
 	gl_Position = u_MVP * vec4(position, 1.0, 1.0);
+	v_Color = color;
 }
 
 #shader fragment
@@ -17,11 +19,11 @@ void main()
 
 layout(location = 0) out vec4 color;
 
-in vec2 v_Coord;
+in vec4 v_Color;
 
 uniform vec4 u_Color;
 
 void main()
 {
-	color = u_Color;
+	color = v_Color * u_Color;
 };
