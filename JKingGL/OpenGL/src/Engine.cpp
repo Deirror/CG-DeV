@@ -20,23 +20,36 @@ void Engine::run(GLFWwindow* window)
 	// Enable GL Effects
 	glfwSwapInterval(1);
 
-	glEnable(GL_BLEND);
-	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	GLCall(glEnable(GL_DEPTH_TEST));
+	GLCall(glEnable(GL_BLEND));
+	GLCall(glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA));
 
 	// Main Code
 	float verts[] =
 	{
-		0.0f, 0.0f, 1.0f, 0.0f, 0.0f,
-		960.0f, 0.0f, 0.0f, 1.0f, 0.0f,
-		480.0f, 270.0f ,0.0f, 0.0f, 1.0f,
-		0.0f, 540.0f, 1.0f, 0.0f, 0.0f,
-		960.0f, 540.0f, 0.0f, 1.0f, 0.0f,
+		0.0f, 0.0f, 1.0f,
+		1.0f, 0.0f, 0.0f,
+
+		960.0f, 0.0f, 0.5,
+		1.0f, 0.0f, 0.0f,
+		
+		480.0f, 540.0f, 0.0f,
+		1.0f, 0.0f, 0.0f,
+
+		0.0f, 540.0f, 0.1f,
+		0.0f, 0.0f, 1.0f,
+
+		960.0f, 540.0f, -0.5f, 
+		0.0f, 0.0f, 1.0f,
+
+		480.0f, 0.0f, -1.0f,
+		0.0f, 0.0f, 1.0f,
 	};
 
 	unsigned int indices[] =
 	{
 		0, 1, 2,
-		2, 3, 4
+		3, 4, 5	
 	};
 
 	glm::mat4 proj = glm::ortho(0.0f, 960.0f, 0.0f, 540.0f, -1.0f, 1.0f);
@@ -45,10 +58,10 @@ void Engine::run(GLFWwindow* window)
 
 	glm::mat4 mvp = proj * view * model;
 
-	VertexBuffer vb(verts, 5 * sizeof(float) * 5);
+	VertexBuffer vb(verts, 6 * sizeof(float) * 6);
 
 	VertexBufferLayout layout;
-	layout.Push<float>(2);
+	layout.Push<float>(3);
 	layout.Push<float>(3);
 
 	VertexArray va;
