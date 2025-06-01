@@ -584,6 +584,7 @@
     <ClInclude Include="src\VertexBufferLayout.h" />
     <ClInclude Include="src\Texture.h" />
     <ClInclude Include="src\WinInit.h" />
+    <ClInclude Include="src\Vertex33.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\texture\image.png" />

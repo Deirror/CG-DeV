@@ -2,9 +2,9 @@
 #version 330 core
 
 layout(location = 0) in vec3 position;
-layout(location = 1) in vec4 color;
+layout(location = 1) in vec3 color;
 
-out vec4 v_Color;
+out vec3 v_Color;
 
 uniform mat4 u_MVP;
 
@@ -19,11 +19,11 @@ void main()
 
 layout(location = 0) out vec4 color;
 
-in vec4 v_Color;
+in vec3 v_Color;
 
-uniform vec4 u_Color;
+uniform vec3 u_Color;
 
 void main()
 {
-	color = v_Color * u_Color;
+	color = vec4(v_Color * u_Color, 1.0);
 };

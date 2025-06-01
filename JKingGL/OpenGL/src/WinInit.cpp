@@ -1,5 +1,4 @@
 #include "WinInit.h"
-//------------------
 #include <GLFW/glfw3.h>
 
 GLFWwindow* glfwWinInit()
