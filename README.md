@@ -59,11 +59,11 @@ glm::mat4 translation = glm::translate(glm::mat4(1.0f), glm::vec3(-1.0f, 0.0f, -
 glm::mat4 rotation = glm::rotate(glm::mat4(1.0f), rotationAngle, glm::vec3(1.0f, 0.0f, 0.0f));
 glm::mat4 model = translation * rotation;
 ```
----
+
 ### View Matrix
 
 The view matrix positions and orients the camera in the world. This is achieved using glm::lookAt, which constructs the view matrix from:
----
+
 ### Camera position
 
 Target point (where the camera is looking)
