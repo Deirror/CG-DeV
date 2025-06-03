@@ -41,13 +41,14 @@ The rendering engine uses standard matrix transformations in OpenGL to position 
 
 ```cpp
 glm::mat4 mvp = projection * view * model;
+```
 
 ### Model Matrix
 
 The model matrix transforms an object from local object space to world space. It includes transformations like:
 
-- Translation – moves the object to a specific position in the world.
-- Rotation – orients the object around one or more axes.
+- Translation â€“ moves the object to a specific position in the world.
+- Rotation â€“ orients the object around one or more axes.
 
 Scaling (not used in this code, but part of standard transformation)
 
@@ -57,6 +58,7 @@ Example:
 glm::mat4 translation = glm::translate(glm::mat4(1.0f), glm::vec3(-1.0f, 0.0f, -3.0f));
 glm::mat4 rotation = glm::rotate(glm::mat4(1.0f), rotationAngle, glm::vec3(1.0f, 0.0f, 0.0f));
 glm::mat4 model = translation * rotation;
+```
 
 ### View Matrix
 
@@ -76,6 +78,7 @@ glm::mat4 view = glm::lookAt(
     cameraPos + cameraFront,
     cameraUp
 );
+```
 
 ### Projection Matrix
 
@@ -88,6 +91,7 @@ glm::mat4 projection = glm::perspective(
     0.1f,                 // near plane
     10.0f                 // far plane
 );
+```
 
 ### MVP Composition
 
@@ -95,5 +99,6 @@ The final MVP matrix is computed as:
 
 ```cpp
 glm::mat4 mvp = projection * view * model;
+```
 
 This composite matrix is sent to the shader to transform vertex positions from model space all the way to clip space for rasterization.
