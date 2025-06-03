@@ -102,3 +102,84 @@ glm::mat4 mvp = projection * view * model;
 ```
 
 This composite matrix is sent to the shader to transform vertex positions from model space all the way to clip space for rasterization.
+
+OpenGL Buffer Objects
+-
+
+Modern OpenGL uses buffer objects to efficiently manage vertex data and rendering configuration. The main buffer types used in this engine are:
+
+- **VAO** – Vertex Array Object
+- **VBO** – Vertex Buffer Object
+- **IBO** (also called EBO) – Index Buffer Object
+- **VBLO** – Vertex Buffer Layout Object (not part of OpenGL core, but often used in abstraction layers)
+
+### Vertex Buffer Object (VBO)
+
+A **VBO** stores vertex attribute data (such as position, color, normals, etc.) in GPU memory. This allows the GPU to access the data directly during rendering without needing to re-upload it from the CPU each frame.
+
+Typical usage:
+
+```cpp
+glGenBuffers(1, &vbo);
+glBindBuffer(GL_ARRAY_BUFFER, vbo);
+glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+```
+
+- GL_ARRAY_BUFFER is used for vertex attributes
+- GL_STATIC_DRAW hints that the data won't change often
+
+### Vertex Array Object (VAO)
+A VAO stores the configuration of vertex attribute pointers and buffer bindings. It acts like a container that remembers which VBOs and attribute layouts to use during drawing.
+
+Typical usage:
+
+```cpp
+glGenVertexArrays(1, &vao);
+glBindVertexArray(vao);
+
+// Bind and configure VBO
+glBindBuffer(GL_ARRAY_BUFFER, vbo);
+glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, stride, (void*)0);
+glEnableVertexAttribArray(0);
+```
+
+VAOs simplify rendering by letting you bind a single VAO before drawing, rather than setting up all attributes every frame.
+
+### Index Buffer Object (IBO or EBO)
+
+An IBO (or EBO – Element Buffer Object) stores indices into the vertex array, allowing reuse of vertex data and reducing redundancy.
+
+Typical usage:
+
+```cpp
+glGenBuffers(1, &ibo);
+glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo);
+glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+```
+
+During rendering:
+
+```cpp
+glDrawElements(GL_TRIANGLES, indexCount, GL_UNSIGNED_INT, 0);
+```
+
+This draws geometry using indices from the IBO instead of relying on vertex order in the VBO.
+
+### Vertex Buffer Layout Object (VBLO)
+
+A VBLO is not part of OpenGL itself but is commonly used in abstraction layers to describe how vertex attributes are structured inside a VBO.
+
+A VBLO helps:
+
+- Define the layout (e.g., position at offset 0, color at offset 12)
+- Automate calls to glVertexAttribPointer
+
+For example, a layout definition might look like:
+
+```cpp
+layout.push<float>(3); // Position (x, y, z)
+layout.push<float>(3); // Color (r, g, b)
+layout.push<float>(2); // Texture coordinates (u, v)
+```
+
+This layout would then be applied during VAO/VBO setup, simplifying attribute bindings.
