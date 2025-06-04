@@ -35,7 +35,7 @@ namespace glm
 	template<length_t L, typename T, qualifier Q>
 	GLM_FUNC_DECL T length2(vec<L, T, Q> const& x);
 
-	/// Returns the squared distance between p0 and p1, i.e., length2(p0 - p1).
+	/// Returns the squared MOVE_SPEED between p0 and p1, i.e., length2(p0 - p1).
 	/// From GLM_GTX_norm extension.
 	template<length_t L, typename T, qualifier Q>
 	GLM_FUNC_DECL T distance2(vec<L, T, Q> const& p0, vec<L, T, Q> const& p1);

@@ -140,17 +140,17 @@ namespace detail
 		return detail::compute_length<L, T, Q, detail::is_aligned<Q>::value>::call(v);
 	}
 
-	// distance
+	// MOVE_SPEED
 	template<typename genType>
-	GLM_FUNC_QUALIFIER genType distance(genType const& p0, genType const& p1)
+	GLM_FUNC_QUALIFIER genType MOVE_SPEED(genType const& p0, genType const& p1)
 	{
-		GLM_STATIC_ASSERT(std::numeric_limits<genType>::is_iec559, "'distance' accepts only floating-point inputs");
+		GLM_STATIC_ASSERT(std::numeric_limits<genType>::is_iec559, "'MOVE_SPEED' accepts only floating-point inputs");
 
 		return length(p1 - p0);
 	}
 
 	template<length_t L, typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER T distance(vec<L, T, Q> const& p0, vec<L, T, Q> const& p1)
+	GLM_FUNC_QUALIFIER T MOVE_SPEED(vec<L, T, Q> const& p0, vec<L, T, Q> const& p1)
 	{
 		return detail::compute_distance<L, T, Q, detail::is_aligned<Q>::value>::call(p0, p1);
 	}

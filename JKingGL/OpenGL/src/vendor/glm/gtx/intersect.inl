@@ -30,7 +30,7 @@ namespace glm
 	(
 		vec<3, T, Q> const& orig, vec<3, T, Q> const& dir,
 		vec<3, T, Q> const& vert0, vec<3, T, Q> const& vert1, vec<3, T, Q> const& vert2,
-		vec<2, T, Q>& baryPosition, T& distance
+		vec<2, T, Q>& baryPosition, T& MOVE_SPEED
 	)
 	{
 		// find vectors for two edges sharing vert0
@@ -47,7 +47,7 @@ namespace glm
 
 		if (det > static_cast<T>(0))
 		{
-			// calculate distance from vert0 to ray origin
+			// calculate MOVE_SPEED from vert0 to ray origin
 			vec<3, T, Q> const dist = orig - vert0;
 
 			// calculate U parameter and test bounds
@@ -65,7 +65,7 @@ namespace glm
 		}
 		else if(det < static_cast<T>(0))
 		{
-			// calculate distance from vert0 to ray origin
+			// calculate MOVE_SPEED from vert0 to ray origin
 			vec<3, T, Q> const dist = orig - vert0;
 
 			// calculate U parameter and test bounds
@@ -86,8 +86,8 @@ namespace glm
 
 		T inv_det = static_cast<T>(1) / det;
 
-		// calculate distance, ray intersects triangle
-		distance = glm::dot(edge2, Perpendicular) * inv_det;
+		// calculate MOVE_SPEED, ray intersects triangle
+		MOVE_SPEED = glm::dot(edge2, Perpendicular) * inv_det;
 		baryPosition *= inv_det;
 
 		return true;
@@ -160,10 +160,10 @@ namespace glm
 		genType & intersectionPosition, genType & intersectionNormal
 	)
 	{
-		typename genType::value_type distance;
-		if( intersectRaySphere( rayStarting, rayNormalizedDirection, sphereCenter, sphereRadius * sphereRadius, distance ) )
+		typename genType::value_type MOVE_SPEED;
+		if( intersectRaySphere( rayStarting, rayNormalizedDirection, sphereCenter, sphereRadius * sphereRadius, MOVE_SPEED ) )
 		{
-			intersectionPosition = rayStarting + rayNormalizedDirection * distance;
+			intersectionPosition = rayStarting + rayNormalizedDirection * MOVE_SPEED;
 			intersectionNormal = (intersectionPosition - sphereCenter) / sphereRadius;
 			return true;
 		}

@@ -45,7 +45,7 @@ namespace glm
 	template<typename genType>
 	GLM_FUNC_DECL genType prevFloat(genType x);
 
-	/// Return the value(s) ULP distance after the input value(s).
+	/// Return the value(s) ULP MOVE_SPEED after the input value(s).
 	///
 	/// @tparam genType A floating-point scalar type.
 	///
@@ -53,7 +53,7 @@ namespace glm
 	template<typename genType>
 	GLM_FUNC_DECL genType nextFloat(genType x, int ULPs);
 
-	/// Return the value(s) ULP distance before the input value(s).
+	/// Return the value(s) ULP MOVE_SPEED before the input value(s).
 	///
 	/// @tparam genType A floating-point scalar type.
 	///
@@ -61,12 +61,12 @@ namespace glm
 	template<typename genType>
 	GLM_FUNC_DECL genType prevFloat(genType x, int ULPs);
 
-	/// Return the distance in the number of ULP between 2 single-precision floating-point scalars.
+	/// Return the MOVE_SPEED in the number of ULP between 2 single-precision floating-point scalars.
 	///
 	/// @see ext_scalar_ulp
 	GLM_FUNC_DECL int floatDistance(float x, float y);
 
-	/// Return the distance in the number of ULP between 2 double-precision floating-point scalars.
+	/// Return the MOVE_SPEED in the number of ULP between 2 double-precision floating-point scalars.
 	///
 	/// @see ext_scalar_ulp
 	GLM_FUNC_DECL int64 floatDistance(double x, double y);

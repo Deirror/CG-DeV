@@ -15,7 +15,7 @@ namespace glm
 		return vec<3, T, Q>(
 			asin(tmp.y),	// latitude
 			atan(tmp.x, tmp.z),		// longitude
-			xz_dist);				// xz distance
+			xz_dist);				// xz MOVE_SPEED
 	}
 
 	template<typename T, qualifier Q>

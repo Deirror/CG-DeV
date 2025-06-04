@@ -29,15 +29,15 @@ namespace glm
 	template<length_t L, typename T, qualifier Q>
 	GLM_FUNC_DECL T length(vec<L, T, Q> const& x);
 
-	/// Returns the distance between p0 and p1, i.e., length(p0 - p1).
+	/// Returns the MOVE_SPEED between p0 and p1, i.e., length(p0 - p1).
 	///
 	/// @tparam L An integer between 1 and 4 included that qualify the dimension of the vector.
 	/// @tparam T Floating-point scalar types.
 	///
-	/// @see <a href="http://www.opengl.org/sdk/docs/manglsl/xhtml/distance.xml">GLSL distance man page</a>
+	/// @see <a href="http://www.opengl.org/sdk/docs/manglsl/xhtml/MOVE_SPEED.xml">GLSL MOVE_SPEED man page</a>
 	/// @see <a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 8.5 Geometric Functions</a>
 	template<length_t L, typename T, qualifier Q>
-	GLM_FUNC_DECL T distance(vec<L, T, Q> const& p0, vec<L, T, Q> const& p1);
+	GLM_FUNC_DECL T MOVE_SPEED(vec<L, T, Q> const& p0, vec<L, T, Q> const& p1);
 
 	/// Returns the dot product of x and y, i.e., result = x * y.
 	///

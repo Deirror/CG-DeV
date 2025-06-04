@@ -38,7 +38,7 @@ namespace glm
 	template<length_t L, typename T, qualifier Q>
 	GLM_FUNC_DECL vec<L, T, Q> nextFloat(vec<L, T, Q> const& x);
 
-	/// Return the value(s) ULP distance after the input value(s).
+	/// Return the value(s) ULP MOVE_SPEED after the input value(s).
 	///
 	/// @tparam L Integer between 1 and 4 included that qualify the dimension of the vector
 	/// @tparam T Floating-point
@@ -48,7 +48,7 @@ namespace glm
 	template<length_t L, typename T, qualifier Q>
 	GLM_FUNC_DECL vec<L, T, Q> nextFloat(vec<L, T, Q> const& x, int ULPs);
 
-	/// Return the value(s) ULP distance after the input value(s).
+	/// Return the value(s) ULP MOVE_SPEED after the input value(s).
 	///
 	/// @tparam L Integer between 1 and 4 included that qualify the dimension of the vector
 	/// @tparam T Floating-point
@@ -68,7 +68,7 @@ namespace glm
 	template<length_t L, typename T, qualifier Q>
 	GLM_FUNC_DECL vec<L, T, Q> prevFloat(vec<L, T, Q> const& x);
 
-	/// Return the value(s) ULP distance before the input value(s).
+	/// Return the value(s) ULP MOVE_SPEED before the input value(s).
 	///
 	/// @tparam L Integer between 1 and 4 included that qualify the dimension of the vector
 	/// @tparam T Floating-point
@@ -78,7 +78,7 @@ namespace glm
 	template<length_t L, typename T, qualifier Q>
 	GLM_FUNC_DECL vec<L, T, Q> prevFloat(vec<L, T, Q> const& x, int ULPs);
 
-	/// Return the value(s) ULP distance before the input value(s).
+	/// Return the value(s) ULP MOVE_SPEED before the input value(s).
 	///
 	/// @tparam L Integer between 1 and 4 included that qualify the dimension of the vector
 	/// @tparam T Floating-point
@@ -88,7 +88,7 @@ namespace glm
 	template<length_t L, typename T, qualifier Q>
 	GLM_FUNC_DECL vec<L, T, Q> prevFloat(vec<L, T, Q> const& x, vec<L, int, Q> const& ULPs);
 
-	/// Return the distance in the number of ULP between 2 single-precision floating-point scalars.
+	/// Return the MOVE_SPEED in the number of ULP between 2 single-precision floating-point scalars.
 	///
 	/// @tparam L Integer between 1 and 4 included that qualify the dimension of the vector
 	/// @tparam Q Value from qualifier enum
@@ -97,7 +97,7 @@ namespace glm
 	template<length_t L, typename T, qualifier Q>
 	GLM_FUNC_DECL vec<L, int, Q> floatDistance(vec<L, float, Q> const& x, vec<L, float, Q> const& y);
 
-	/// Return the distance in the number of ULP between 2 double-precision floating-point scalars.
+	/// Return the MOVE_SPEED in the number of ULP between 2 double-precision floating-point scalars.
 	///
 	/// @tparam L Integer between 1 and 4 included that qualify the dimension of the vector
 	/// @tparam Q Value from qualifier enum

@@ -29,6 +29,46 @@ static glm::vec3 normalizeScreenToNDC(float x, float y, float width, float heigh
 	return glm::vec3(normX, normY, z);
 }
 
+static float getAspectRatio()
+{
+	int width, height;
+	glfwGetFramebufferSize(glfwGetCurrentContext(), &width, &height);
+	if (height == 0) height = 1; 
+	return static_cast<float>(width) / static_cast<float>(height);
+}
+
+static void moveCamera(GLFWwindow* window, Camera& camera)
+{
+	double x, y;
+	glfwGetCursorPos(window, &x, &y);
+	camera.mouseUpdate(glm::vec2(x, y));
+
+	if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
+	{
+		camera.moveForward();
+	}	
+	if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
+	{
+		camera.moveBackward();
+	}
+	if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
+	{
+		camera.moveLeft();
+	}
+	if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
+	{
+		camera.moveRight();
+	}
+	if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS)
+	{
+		camera.moveUp();
+	}
+	if (glfwGetKey(window, GLFW_KEY_LEFT_CONTROL) == GLFW_PRESS)
+	{
+		camera.moveDown();
+	}
+}
+
 void Engine::run(GLFWwindow* window)
 {
 	// Enable GL Effects
@@ -118,17 +158,9 @@ void Engine::run(GLFWwindow* window)
 	{
 		renderer.Clear();
 
-		int width, height;
-		glfwGetFramebufferSize(window, &width, &height);
-		float aspectRatio = (float)width / (float)height;
+		moveCamera(window, camera);
 
-		if (height == 0) height = 1;
-
-		double x, y;
-		glfwGetCursorPos(window, &x, &y);
-		camera.mouseUpdate(glm::vec2(x, y));
-
-		glm::mat4 projPersp = glm::perspective(glm::radians(60.0f), float(width) / float(height), 0.1f, 10.0f);
+		glm::mat4 projPersp = glm::perspective(glm::radians(60.0f), getAspectRatio(), 0.1f, 10.0f);
 
 		//Cube 1
 		glm::mat4 translation = glm::translate(glm::mat4(1.0f), glm::vec3(-1.0f, 0.0f, -3.0f));

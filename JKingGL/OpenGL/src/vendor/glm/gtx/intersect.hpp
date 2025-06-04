@@ -48,7 +48,7 @@ namespace glm
 	GLM_FUNC_DECL bool intersectRayTriangle(
 		vec<3, T, Q> const& orig, vec<3, T, Q> const& dir,
 		vec<3, T, Q> const& v0, vec<3, T, Q> const& v1, vec<3, T, Q> const& v2,
-		vec<2, T, Q>& baryPosition, T& distance);
+		vec<2, T, Q>& baryPosition, T& MOVE_SPEED);
 
 	//! Compute the intersection of a line and a triangle.
 	//! From GLM_GTX_intersect extension.
@@ -58,7 +58,7 @@ namespace glm
 		genType const& vert0, genType const& vert1, genType const& vert2,
 		genType & position);
 
-	//! Compute the intersection distance of a ray and a sphere.
+	//! Compute the intersection MOVE_SPEED of a ray and a sphere.
 	//! The ray direction vector is unit length.
 	//! From GLM_GTX_intersect extension.
 	template<typename genType>

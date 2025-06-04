@@ -217,8 +217,8 @@ namespace glm
 	///
 	/// @param fovy Specifies the field of view angle, in degrees, in the y direction. Expressed in radians.
 	/// @param aspect Specifies the aspect ratio that determines the field of view in the x direction. The aspect ratio is the ratio of x (width) to y (height).
-	/// @param near Specifies the distance from the viewer to the near clipping plane (always positive).
-	/// @param far Specifies the distance from the viewer to the far clipping plane (always positive).
+	/// @param near Specifies the MOVE_SPEED from the viewer to the near clipping plane (always positive).
+	/// @param far Specifies the MOVE_SPEED from the viewer to the far clipping plane (always positive).
 	///
 	/// @tparam T A floating-point scalar type
 	template<typename T>
@@ -230,8 +230,8 @@ namespace glm
 	///
 	/// @param fovy Specifies the field of view angle, in degrees, in the y direction. Expressed in radians.
 	/// @param aspect Specifies the aspect ratio that determines the field of view in the x direction. The aspect ratio is the ratio of x (width) to y (height).
-	/// @param near Specifies the distance from the viewer to the near clipping plane (always positive).
-	/// @param far Specifies the distance from the viewer to the far clipping plane (always positive).
+	/// @param near Specifies the MOVE_SPEED from the viewer to the near clipping plane (always positive).
+	/// @param far Specifies the MOVE_SPEED from the viewer to the far clipping plane (always positive).
 	///
 	/// @tparam T A floating-point scalar type
 	template<typename T>
@@ -243,8 +243,8 @@ namespace glm
 	///
 	/// @param fovy Specifies the field of view angle, in degrees, in the y direction. Expressed in radians.
 	/// @param aspect Specifies the aspect ratio that determines the field of view in the x direction. The aspect ratio is the ratio of x (width) to y (height).
-	/// @param near Specifies the distance from the viewer to the near clipping plane (always positive).
-	/// @param far Specifies the distance from the viewer to the far clipping plane (always positive).
+	/// @param near Specifies the MOVE_SPEED from the viewer to the near clipping plane (always positive).
+	/// @param far Specifies the MOVE_SPEED from the viewer to the far clipping plane (always positive).
 	///
 	/// @tparam T A floating-point scalar type
 	template<typename T>
@@ -256,8 +256,8 @@ namespace glm
 	///
 	/// @param fovy Specifies the field of view angle, in degrees, in the y direction. Expressed in radians.
 	/// @param aspect Specifies the aspect ratio that determines the field of view in the x direction. The aspect ratio is the ratio of x (width) to y (height).
-	/// @param near Specifies the distance from the viewer to the near clipping plane (always positive).
-	/// @param far Specifies the distance from the viewer to the far clipping plane (always positive).
+	/// @param near Specifies the MOVE_SPEED from the viewer to the near clipping plane (always positive).
+	/// @param far Specifies the MOVE_SPEED from the viewer to the far clipping plane (always positive).
 	///
 	/// @tparam T A floating-point scalar type
 	template<typename T>
@@ -269,8 +269,8 @@ namespace glm
 	///
 	/// @param fovy Specifies the field of view angle, in degrees, in the y direction. Expressed in radians.
 	/// @param aspect Specifies the aspect ratio that determines the field of view in the x direction. The aspect ratio is the ratio of x (width) to y (height).
-	/// @param near Specifies the distance from the viewer to the near clipping plane (always positive).
-	/// @param far Specifies the distance from the viewer to the far clipping plane (always positive).
+	/// @param near Specifies the MOVE_SPEED from the viewer to the near clipping plane (always positive).
+	/// @param far Specifies the MOVE_SPEED from the viewer to the far clipping plane (always positive).
 	///
 	/// @tparam T A floating-point scalar type
 	template<typename T>
@@ -282,8 +282,8 @@ namespace glm
 	///
 	/// @param fovy Specifies the field of view angle, in degrees, in the y direction. Expressed in radians.
 	/// @param aspect Specifies the aspect ratio that determines the field of view in the x direction. The aspect ratio is the ratio of x (width) to y (height).
-	/// @param near Specifies the distance from the viewer to the near clipping plane (always positive).
-	/// @param far Specifies the distance from the viewer to the far clipping plane (always positive).
+	/// @param near Specifies the MOVE_SPEED from the viewer to the near clipping plane (always positive).
+	/// @param far Specifies the MOVE_SPEED from the viewer to the far clipping plane (always positive).
 	///
 	/// @tparam T A floating-point scalar type
 	template<typename T>
@@ -296,8 +296,8 @@ namespace glm
 	///
 	/// @param fovy Specifies the field of view angle, in degrees, in the y direction. Expressed in radians.
 	/// @param aspect Specifies the aspect ratio that determines the field of view in the x direction. The aspect ratio is the ratio of x (width) to y (height).
-	/// @param near Specifies the distance from the viewer to the near clipping plane (always positive).
-	/// @param far Specifies the distance from the viewer to the far clipping plane (always positive).
+	/// @param near Specifies the MOVE_SPEED from the viewer to the near clipping plane (always positive).
+	/// @param far Specifies the MOVE_SPEED from the viewer to the far clipping plane (always positive).
 	///
 	/// @tparam T A floating-point scalar type
 	template<typename T>
@@ -310,8 +310,8 @@ namespace glm
 	///
 	/// @param fovy Specifies the field of view angle, in degrees, in the y direction. Expressed in radians.
 	/// @param aspect Specifies the aspect ratio that determines the field of view in the x direction. The aspect ratio is the ratio of x (width) to y (height).
-	/// @param near Specifies the distance from the viewer to the near clipping plane (always positive).
-	/// @param far Specifies the distance from the viewer to the far clipping plane (always positive).
+	/// @param near Specifies the MOVE_SPEED from the viewer to the near clipping plane (always positive).
+	/// @param far Specifies the MOVE_SPEED from the viewer to the far clipping plane (always positive).
 	///
 	/// @tparam T A floating-point scalar type
 	template<typename T>
@@ -323,8 +323,8 @@ namespace glm
 	///
 	/// @param fovy Specifies the field of view angle in the y direction. Expressed in radians.
 	/// @param aspect Specifies the aspect ratio that determines the field of view in the x direction. The aspect ratio is the ratio of x (width) to y (height).
-	/// @param near Specifies the distance from the viewer to the near clipping plane (always positive).
-	/// @param far Specifies the distance from the viewer to the far clipping plane (always positive).
+	/// @param near Specifies the MOVE_SPEED from the viewer to the near clipping plane (always positive).
+	/// @param far Specifies the MOVE_SPEED from the viewer to the far clipping plane (always positive).
 	///
 	/// @tparam T A floating-point scalar type
 	/// @see <a href="https://www.khronos.org/registry/OpenGL-Refpages/gl2.1/xhtml/gluPerspective.xml">gluPerspective man page</a>
@@ -338,8 +338,8 @@ namespace glm
 	/// @param fov Expressed in radians.
 	/// @param width Width of the viewport
 	/// @param height Height of the viewport
-	/// @param near Specifies the distance from the viewer to the near clipping plane (always positive).
-	/// @param far Specifies the distance from the viewer to the far clipping plane (always positive).
+	/// @param near Specifies the MOVE_SPEED from the viewer to the near clipping plane (always positive).
+	/// @param far Specifies the MOVE_SPEED from the viewer to the far clipping plane (always positive).
 	///
 	/// @tparam T A floating-point scalar type
 	template<typename T>
@@ -352,8 +352,8 @@ namespace glm
 	/// @param fov Expressed in radians.
 	/// @param width Width of the viewport
 	/// @param height Height of the viewport
-	/// @param near Specifies the distance from the viewer to the near clipping plane (always positive).
-	/// @param far Specifies the distance from the viewer to the far clipping plane (always positive).
+	/// @param near Specifies the MOVE_SPEED from the viewer to the near clipping plane (always positive).
+	/// @param far Specifies the MOVE_SPEED from the viewer to the far clipping plane (always positive).
 	///
 	/// @tparam T A floating-point scalar type
 	template<typename T>
@@ -366,8 +366,8 @@ namespace glm
 	/// @param fov Expressed in radians.
 	/// @param width Width of the viewport
 	/// @param height Height of the viewport
-	/// @param near Specifies the distance from the viewer to the near clipping plane (always positive).
-	/// @param far Specifies the distance from the viewer to the far clipping plane (always positive).
+	/// @param near Specifies the MOVE_SPEED from the viewer to the near clipping plane (always positive).
+	/// @param far Specifies the MOVE_SPEED from the viewer to the far clipping plane (always positive).
 	///
 	/// @tparam T A floating-point scalar type
 	template<typename T>
@@ -380,8 +380,8 @@ namespace glm
 	/// @param fov Expressed in radians.
 	/// @param width Width of the viewport
 	/// @param height Height of the viewport
-	/// @param near Specifies the distance from the viewer to the near clipping plane (always positive).
-	/// @param far Specifies the distance from the viewer to the far clipping plane (always positive).
+	/// @param near Specifies the MOVE_SPEED from the viewer to the near clipping plane (always positive).
+	/// @param far Specifies the MOVE_SPEED from the viewer to the far clipping plane (always positive).
 	///
 	/// @tparam T A floating-point scalar type
 	template<typename T>
@@ -394,8 +394,8 @@ namespace glm
 	/// @param fov Expressed in radians.
 	/// @param width Width of the viewport
 	/// @param height Height of the viewport
-	/// @param near Specifies the distance from the viewer to the near clipping plane (always positive).
-	/// @param far Specifies the distance from the viewer to the far clipping plane (always positive).
+	/// @param near Specifies the MOVE_SPEED from the viewer to the near clipping plane (always positive).
+	/// @param far Specifies the MOVE_SPEED from the viewer to the far clipping plane (always positive).
 	///
 	/// @tparam T A floating-point scalar type
 	template<typename T>
@@ -408,8 +408,8 @@ namespace glm
 	/// @param fov Expressed in radians.
 	/// @param width Width of the viewport
 	/// @param height Height of the viewport
-	/// @param near Specifies the distance from the viewer to the near clipping plane (always positive).
-	/// @param far Specifies the distance from the viewer to the far clipping plane (always positive).
+	/// @param near Specifies the MOVE_SPEED from the viewer to the near clipping plane (always positive).
+	/// @param far Specifies the MOVE_SPEED from the viewer to the far clipping plane (always positive).
 	///
 	/// @tparam T A floating-point scalar type
 	template<typename T>
@@ -423,8 +423,8 @@ namespace glm
 	/// @param fov Expressed in radians.
 	/// @param width Width of the viewport
 	/// @param height Height of the viewport
-	/// @param near Specifies the distance from the viewer to the near clipping plane (always positive).
-	/// @param far Specifies the distance from the viewer to the far clipping plane (always positive).
+	/// @param near Specifies the MOVE_SPEED from the viewer to the near clipping plane (always positive).
+	/// @param far Specifies the MOVE_SPEED from the viewer to the far clipping plane (always positive).
 	///
 	/// @tparam T A floating-point scalar type
 	template<typename T>
@@ -438,8 +438,8 @@ namespace glm
 	/// @param fov Expressed in radians.
 	/// @param width Width of the viewport
 	/// @param height Height of the viewport
-	/// @param near Specifies the distance from the viewer to the near clipping plane (always positive).
-	/// @param far Specifies the distance from the viewer to the far clipping plane (always positive).
+	/// @param near Specifies the MOVE_SPEED from the viewer to the near clipping plane (always positive).
+	/// @param far Specifies the MOVE_SPEED from the viewer to the far clipping plane (always positive).
 	///
 	/// @tparam T A floating-point scalar type
 	template<typename T>
@@ -452,8 +452,8 @@ namespace glm
 	/// @param fov Expressed in radians.
 	/// @param width Width of the viewport
 	/// @param height Height of the viewport
-	/// @param near Specifies the distance from the viewer to the near clipping plane (always positive).
-	/// @param far Specifies the distance from the viewer to the far clipping plane (always positive).
+	/// @param near Specifies the MOVE_SPEED from the viewer to the near clipping plane (always positive).
+	/// @param far Specifies the MOVE_SPEED from the viewer to the far clipping plane (always positive).
 	///
 	/// @tparam T A floating-point scalar type
 	template<typename T>
@@ -464,7 +464,7 @@ namespace glm
 	///
 	/// @param fovy Specifies the field of view angle, in degrees, in the y direction. Expressed in radians.
 	/// @param aspect Specifies the aspect ratio that determines the field of view in the x direction. The aspect ratio is the ratio of x (width) to y (height).
-	/// @param near Specifies the distance from the viewer to the near clipping plane (always positive).
+	/// @param near Specifies the MOVE_SPEED from the viewer to the near clipping plane (always positive).
 	///
 	/// @tparam T A floating-point scalar type
 	template<typename T>
@@ -475,7 +475,7 @@ namespace glm
 	///
 	/// @param fovy Specifies the field of view angle, in degrees, in the y direction. Expressed in radians.
 	/// @param aspect Specifies the aspect ratio that determines the field of view in the x direction. The aspect ratio is the ratio of x (width) to y (height).
-	/// @param near Specifies the distance from the viewer to the near clipping plane (always positive).
+	/// @param near Specifies the MOVE_SPEED from the viewer to the near clipping plane (always positive).
 	///
 	/// @tparam T A floating-point scalar type
 	template<typename T>
@@ -486,7 +486,7 @@ namespace glm
 	///
 	/// @param fovy Specifies the field of view angle, in degrees, in the y direction. Expressed in radians.
 	/// @param aspect Specifies the aspect ratio that determines the field of view in the x direction. The aspect ratio is the ratio of x (width) to y (height).
-	/// @param near Specifies the distance from the viewer to the near clipping plane (always positive).
+	/// @param near Specifies the MOVE_SPEED from the viewer to the near clipping plane (always positive).
 	///
 	/// @tparam T A floating-point scalar type
 	template<typename T>
@@ -497,7 +497,7 @@ namespace glm
 	///
 	/// @param fovy Specifies the field of view angle, in degrees, in the y direction. Expressed in radians.
 	/// @param aspect Specifies the aspect ratio that determines the field of view in the x direction. The aspect ratio is the ratio of x (width) to y (height).
-	/// @param near Specifies the distance from the viewer to the near clipping plane (always positive).
+	/// @param near Specifies the MOVE_SPEED from the viewer to the near clipping plane (always positive).
 	///
 	/// @tparam T A floating-point scalar type
 	template<typename T>
@@ -508,7 +508,7 @@ namespace glm
 	///
 	/// @param fovy Specifies the field of view angle, in degrees, in the y direction. Expressed in radians.
 	/// @param aspect Specifies the aspect ratio that determines the field of view in the x direction. The aspect ratio is the ratio of x (width) to y (height).
-	/// @param near Specifies the distance from the viewer to the near clipping plane (always positive).
+	/// @param near Specifies the MOVE_SPEED from the viewer to the near clipping plane (always positive).
 	/// @param ep Epsilon
 	///
 	/// @tparam T A floating-point scalar type

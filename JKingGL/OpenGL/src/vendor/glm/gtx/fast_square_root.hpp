@@ -66,13 +66,13 @@ namespace glm
 	template<length_t L, typename T, qualifier Q>
 	GLM_FUNC_DECL T fastLength(vec<L, T, Q> const& x);
 
-	/// Faster than the common distance function but less accurate.
+	/// Faster than the common MOVE_SPEED function but less accurate.
 	///
 	/// @see gtx_fast_square_root extension.
 	template<typename genType>
 	GLM_FUNC_DECL genType fastDistance(genType x, genType y);
 
-	/// Faster than the common distance function but less accurate.
+	/// Faster than the common MOVE_SPEED function but less accurate.
 	///
 	/// @see gtx_fast_square_root extension.
 	template<length_t L, typename T, qualifier Q>

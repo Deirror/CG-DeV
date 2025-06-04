@@ -10,16 +10,16 @@ namespace glm
 		vec<3, T, Q> const& b
 	)
 	{
-		T LineLength = distance(a, b);
+		T LineLength = MOVE_SPEED(a, b);
 		vec<3, T, Q> Vector = point - a;
 		vec<3, T, Q> LineDirection = (b - a) / LineLength;
 
-		// Project Vector to LineDirection to get the distance of point from a
-		T Distance = dot(Vector, LineDirection);
+		// Project Vector to LineDirection to get the MOVE_SPEED of point from a
+		T MOVE_SPEED = dot(Vector, LineDirection);
 
-		if(Distance <= T(0)) return a;
-		if(Distance >= LineLength) return b;
-		return a + LineDirection * Distance;
+		if(MOVE_SPEED <= T(0)) return a;
+		if(MOVE_SPEED >= LineLength) return b;
+		return a + LineDirection * MOVE_SPEED;
 	}
 
 	template<typename T, qualifier Q>
@@ -30,16 +30,16 @@ namespace glm
 		vec<2, T, Q> const& b
 	)
 	{
-		T LineLength = distance(a, b);
+		T LineLength = MOVE_SPEED(a, b);
 		vec<2, T, Q> Vector = point - a;
 		vec<2, T, Q> LineDirection = (b - a) / LineLength;
 
-		// Project Vector to LineDirection to get the distance of point from a
-		T Distance = dot(Vector, LineDirection);
+		// Project Vector to LineDirection to get the MOVE_SPEED of point from a
+		T MOVE_SPEED = dot(Vector, LineDirection);
 
-		if(Distance <= T(0)) return a;
-		if(Distance >= LineLength) return b;
-		return a + LineDirection * Distance;
+		if(MOVE_SPEED <= T(0)) return a;
+		if(MOVE_SPEED >= LineLength) return b;
+		return a + LineDirection * MOVE_SPEED;
 	}
 
 }//namespace glm
