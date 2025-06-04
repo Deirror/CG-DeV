@@ -18,6 +18,7 @@
 #include "WinInit.h"
 
 #include "Vertex33.h"
+#include "Camera.h"
 
 #define NUM_ARRAY_ELEMENTS(A) sizeof(A) / sizeof(*A)
 
@@ -62,7 +63,7 @@ void Engine::run(GLFWwindow* window)
 
 		{glm::vec3(0.0f, 0.0f, -1.0f),
 		glm::vec3(0.0f, 1.0f, 0.0f)},
-		
+
 		{glm::vec3(0.0f, 540.0f, -1.0f),
 		glm::vec3(1.0f, 0.0f, 0.0f)},
 
@@ -111,14 +112,7 @@ void Engine::run(GLFWwindow* window)
 
 	Renderer renderer;
 
-	glm::vec3 cameraPos = glm::vec3(0.0f, 3.5f, 1.0f);
-	glm::vec3 cameraFront = glm::vec3(0.0f, -1.5f, -1.0f);  // where the camera looks
-	glm::vec3 cameraUp = glm::vec3(0.0f, 1.0f, 0.0f);    // up direction
-	float cameraSpeed = 0.05f;  // adjust for faster/slower movement
-	
-	float rotationAngle1 = 54.0f;
-	float rotationAngle2 = 126.0f;
-	float rotationSpeed = glm::radians(1.0f);  // 1 degree per frame (adjust as needed)
+	Camera camera;
 
 	while (!glfwWindowShouldClose(window))
 	{
@@ -129,50 +123,28 @@ void Engine::run(GLFWwindow* window)
 		float aspectRatio = (float)width / (float)height;
 
 		if (height == 0) height = 1;
-		
-		// Flatten the front vector to the XZ plane
-		glm::vec3 cameraFrontXZ = glm::normalize(glm::vec3(cameraFront.x, 0.0f, cameraFront.z));
-		glm::vec3 right = glm::normalize(glm::cross(cameraFrontXZ, cameraUp));
 
-		if (glfwGetKey(window, GLFW_KEY_R) == GLFW_PRESS)
-		{
-			rotationAngle1 += rotationSpeed;
-			rotationAngle2 += rotationSpeed;
-		}
+		double x, y;
+		glfwGetCursorPos(window, &x, &y);
+		camera.mouseUpdate(glm::vec2(x, y));
 
-		// Forward/backward (W/S)
-		if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
-			cameraPos += cameraSpeed * cameraFrontXZ;
-		if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
-			cameraPos -= cameraSpeed * cameraFrontXZ;
-
-		// Strafe left/right (A/D)
-		if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
-			cameraPos -= right * cameraSpeed;
-		if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
-			cameraPos += right * cameraSpeed;
-
-		// Cube 1
 		glm::mat4 projPersp = glm::perspective(glm::radians(60.0f), float(width) / float(height), 0.1f, 10.0f);
-		glm::mat4 view = glm::lookAt(
-			cameraPos,
-			cameraPos + cameraFront,  // look slightly ahead
-			cameraUp
-		);
-		glm::mat4 translation = glm::translate(glm::mat4(1.0f), glm::vec3(-1.0f, 0.0f, -3.0f));
-		glm::mat4 rotation = glm::rotate(glm::mat4(1.0f), rotationAngle1, glm::vec3(1.0f, 0.0f, 0.0f));
 
-		glm::mat4 mvp = projPersp * view * translation * rotation;
+		//Cube 1
+		glm::mat4 translation = glm::translate(glm::mat4(1.0f), glm::vec3(-1.0f, 0.0f, -3.0f));
+		glm::mat4 rotation = glm::rotate(glm::mat4(1.0f), 54.0f, glm::vec3(1.0f, 0.0f, 0.0f));
+
+		glm::mat4 mvp = projPersp * camera.getViewMatrix() * translation * rotation;
 
 		shader.SetUniformMat4f("u_MVP", mvp);
 
 		renderer.Draw(va, ib, shader);
 
-		// Cube 2
+		//Cube 2
 		translation = glm::translate(glm::mat4(1.0f), glm::vec3(1.0f, 0.0f, -3.75f));
-		rotation = glm::rotate(glm::mat4(1.0f), rotationAngle2, glm::vec3(0.0f, 1.0f, 0.0f));
+		rotation = glm::rotate(glm::mat4(1.0f), 126.0f, glm::vec3(0.0f, 1.0f, 0.0f));
 
-		mvp = projPersp * view * translation * rotation;
+		mvp = projPersp * camera.getViewMatrix() * translation * rotation;
 
 		shader.SetUniformMat4f("u_MVP", mvp);
 
