@@ -184,12 +184,12 @@ layout.push<float>(2); // Texture coordinates (u, v)
 
 This layout would then be applied during VAO/VBO setup, simplifying attribute bindings.
 
-# Camera Class: View Matrix and Mouse Input Math
+Camera Class: View Matrix and Mouse Input Math
+-
 
 This text explains the mathematics behind the Camera class implementation using GLM for view matrix computation and mouse-based rotation.
 
-getViewMatrix
--
+## getViewMatrix
 
 ```cpp
 glm::mat4 Camera::getViewMatrix() const {
