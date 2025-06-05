@@ -183,3 +183,73 @@ layout.push<float>(2); // Texture coordinates (u, v)
 ```
 
 This layout would then be applied during VAO/VBO setup, simplifying attribute bindings.
+
+# Camera Class: View Matrix and Mouse Input Math
+
+This text explains the mathematics behind the Camera class implementation using GLM for view matrix computation and mouse-based rotation.
+
+getViewMatrix
+-
+
+```cpp
+glm::mat4 Camera::getViewMatrix() const {
+    return glm::lookAt(m_position, m_position + m_direction, m_up);
+}
+```
+
+## Description
+
+Generates the camera's view matrix using the glm::lookAt function.
+
+### Parameters
+- m_position: The position of the camera in world space
+- m_direction: The forward direction the camera is looking at
+- m_up: The world up vector to maintain orientation
+
+### Math Behind
+
+The glm::lookAt function constructs a view matrix from:
+- Eye (camera position): m_position
+- Center (target look-at point): m_position + m_direction
+- Up vector: m_up (if anything than y=1 is modified then we get a "swinging boat effect")
+- 
+This matrix transforms world coordinates into camera/view space.
+
+
+mouseUpdate
+-
+
+```cpp
+void Camera::mouseUpdate(const glm::vec2& newMousePosition) {
+    glm::vec2 delta = newMousePosition - m_oldMousePosition;
+
+    const float ROTATION_SPEED = 0.003f;
+    glm::vec3 toRotateAround = glm::cross(m_direction, m_up);
+    glm::mat4 rotator = glm::rotate(glm::mat4(1), -delta.x * ROTATION_SPEED, m_up) *
+                        glm::rotate(glm::mat4(1), -delta.y * ROTATION_SPEED, toRotateAround);
+
+    m_direction = glm::mat3(rotator) * m_direction;
+    m_oldMousePosition = newMousePosition;
+}
+```
+
+## Description
+
+Handles camera rotation based on the mouse's new position. Applies yaw and pitch to the direction vector.
+
+Steps
+- Calculate delta:
+  - delta = newMousePosition - m_oldMousePosition
+- Yaw (horizontal rotation):
+  - Apply rotation around m_up (global up vector) by delta.x.
+- Pitch (vertical rotation):
+  - Apply rotation around the right vector:
+    - toRotateAround = cross(m_direction, m_up)
+- Build rotation matrix:
+  - Composite rotation is applied:
+    - rotator = rotate(yaw) * rotate(pitch)
+- Update direction:
+  - Apply rotation to m_direction.
+  - Update previous mouse position.
+
+![Yaw_Roll_Pitch](https://github.com/user-attachments/assets/6589d6f9-4ad7-474c-b39e-00f0cf1cd299)
