@@ -5,7 +5,7 @@
 class Camera
 {
 private:
-	const float MOVE_SPEED = 0.1f;
+	const float MOVE_SPEED = 0.01f;
 
 public: 
 	Camera();

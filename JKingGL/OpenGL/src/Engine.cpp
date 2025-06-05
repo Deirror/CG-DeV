@@ -29,6 +29,20 @@ static glm::vec3 normalizeScreenToNDC(float x, float y, float width, float heigh
 	return glm::vec3(normX, normY, z);
 }
 
+static void normalizeVertices(Vertex33* verts, int count, float width, float height)
+{
+	for (int i = 0; i < count; ++i)
+	{
+		verts[i].position = normalizeScreenToNDC(
+			verts[i].position.x,
+			verts[i].position.y,
+			width,
+			height,
+			verts[i].position.z
+		);
+	}
+}
+
 static float getAspectRatio()
 {
 	int width, height;
@@ -84,7 +98,7 @@ void Engine::run(GLFWwindow* window)
 		{glm::vec3(0.0f, 0.0f, 1.0f),
 		glm::vec3(0.0f, 1.0f, 0.0f)},
 
-		{glm::vec3(0.0f, 540.0f, 1.0),
+		{glm::vec3(0.0f, 540.0f, 1.0f),
 		glm::vec3(1.0f, 0.0f, 0.0f)},
 
 		{glm::vec3(960.0f, 540.0f, 1.0f),
@@ -125,27 +139,36 @@ void Engine::run(GLFWwindow* window)
 		0, 3, 6, 0, 4, 6,
 	};
 
-	for (int i = 0; i < NUM_ARRAY_ELEMENTS(verts); ++i)
+	Vertex33 test[] =
 	{
-		verts[i].position = normalizeScreenToNDC(
-			verts[i].position.x,
-			verts[i].position.y,
-			WIDTH,
-			HEIGHT,
-			verts[i].position.z
-		);
-	}
+		{glm::vec3(0.0f, 0.0f, -2.0f), glm::vec3(0.0f, 1.0f, 0.0f)},
+		{glm::vec3(960.0f, 540.0f, -2.0f), glm::vec3(1.0f, 0.0f, 0.0f)},
+		{glm::vec3(960.0f, 0.0f, -2.0f), glm::vec3(1.0f, 0.0f, 0.0f)},
+	};
 
-	VertexBuffer vb(verts, sizeof(verts));
+	unsigned int testIndices[] =
+	{
+		0, 1, 2
+	};
+
+	normalizeVertices(verts, NUM_ARRAY_ELEMENTS(verts), WIDTH, HEIGHT);
+	normalizeVertices(test, NUM_ARRAY_ELEMENTS(test), WIDTH, HEIGHT);
+
+	VertexBuffer vb1(verts, sizeof(verts));
+	VertexBuffer vb2(test, sizeof(test));
 
 	VertexBufferLayout layout;
 	layout.Push<float>(3);
 	layout.Push<float>(3);
 
-	VertexArray va;
-	va.AddVertexBuffer(vb, layout);
+	VertexArray va1;
+	va1.AddVertexBuffer(vb1, layout);
 
-	IndexBuffer ib(indices, NUM_ARRAY_ELEMENTS(indices));
+	VertexArray va2;
+	va2.AddVertexBuffer(vb2, layout);
+
+	IndexBuffer ib1(indices, NUM_ARRAY_ELEMENTS(indices));
+	IndexBuffer ib2(testIndices, NUM_ARRAY_ELEMENTS(testIndices));
 
 	Shader shader("res/shaders/Basic.shader");
 	shader.SetUniform3f("u_Color", 1.0f, 1.0f, 1.0f);
@@ -170,7 +193,7 @@ void Engine::run(GLFWwindow* window)
 
 		shader.SetUniformMat4f("u_MVP", mvp);
 
-		renderer.Draw(va, ib, shader);
+		renderer.Draw(va1, ib1, shader);
 
 		//Cube 2
 		translation = glm::translate(glm::mat4(1.0f), glm::vec3(1.0f, 0.0f, -3.75f));
@@ -180,7 +203,17 @@ void Engine::run(GLFWwindow* window)
 
 		shader.SetUniformMat4f("u_MVP", mvp);
 
-		renderer.Draw(va, ib, shader);
+		renderer.Draw(va1, ib1, shader);
+
+		// Test Triangle
+		translation = glm::translate(glm::mat4(1.0f), glm::vec3(1.0f, 0.0f, -3.75f));
+
+		mvp = projPersp * camera.getViewMatrix() * translation;
+
+		shader.SetUniformMat4f("u_MVP", mvp);
+
+		renderer.Draw(va2, ib2, shader);
+
 
 		glfwSwapBuffers(window);
 
