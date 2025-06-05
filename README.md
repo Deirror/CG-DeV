@@ -251,4 +251,4 @@ Steps
 - Update direction:
   - Apply rotation to m_direction.
   - Update previous mouse position.
-<img src="https://github.com/user-attachments/assets/6589d6f9-4ad7-474c-b39e-00f0cf1cd299" width=150 height=270 />
+<img src="https://github.com/user-attachments/assets/6589d6f9-4ad7-474c-b39e-00f0cf1cd299" width=200 height=270 />
