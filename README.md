@@ -251,4 +251,36 @@ Steps
 - Update direction:
   - Apply rotation to m_direction.
   - Update previous mouse position.
+  
 <img src="https://github.com/user-attachments/assets/6589d6f9-4ad7-474c-b39e-00f0cf1cd299" width=230 height=270 />
+
+Face Culling in OpenGL
+-
+
+Face culling improves rendering performance by discarding faces (triangles) that are not visible to the camera—typically the "back" faces(makes fragment shader do less work)
+
+## Enabling Face Culling
+```cpp
+glEnable(GL_CULL_FACE);
+```
+
+This tells OpenGL to discard one side of polygons during rendering.
+
+## Choosing Which Faces to Cull
+
+```cpp
+glCullFace(GL_BACK);  // Cull back-facing polygons (default)
+glCullFace(GL_FRONT); // Cull front-facing polygons
+glCullFace(GL_FRONT_AND_BACK); // Rarely used, discards all polygons
+```
+
+## Winding Order: CW vs CCW
+
+OpenGL determines if a face is front- or back-facing based on vertex winding order (the order vertices are defined in a triangle):
+
+```cpp
+glFrontFace(GL_CCW); // Counter-clockwise vertices are front-facing (default)
+glFrontFace(GL_CW);  // Clockwise vertices are front-facing
+```
+
+If your models appear inside-out or invisible, you may need to switch the winding mode.
