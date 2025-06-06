@@ -197,7 +197,7 @@ glm::mat4 Camera::getViewMatrix() const {
 }
 ```
 
-## Description
+### Description
 
 Generates the camera's view matrix using the glm::lookAt function.
 
@@ -216,8 +216,8 @@ The glm::lookAt function constructs a view matrix from:
 This matrix transforms world coordinates into camera/view space.
 
 
-mouseUpdate
--
+### mouseUpdate
+<br></br>
 
 ```cpp
 void Camera::mouseUpdate(const glm::vec2& newMousePosition) {
@@ -233,7 +233,7 @@ void Camera::mouseUpdate(const glm::vec2& newMousePosition) {
 }
 ```
 
-## Description
+### Description
 
 Handles camera rotation based on the mouse's new position. Applies yaw and pitch to the direction vector.
 
@@ -259,14 +259,14 @@ Face Culling in OpenGL
 
 Face culling improves rendering performance by discarding faces (triangles) that are not visible to the camera—typically the "back" faces(makes fragment shader do less work)
 
-## Enabling Face Culling
+### Enabling Face Culling
 ```cpp
 glEnable(GL_CULL_FACE);
 ```
 
 This tells OpenGL to discard one side of polygons during rendering.
 
-## Choosing Which Faces to Cull
+### Choosing Which Faces to Cull
 
 ```cpp
 glCullFace(GL_BACK);  // Cull back-facing polygons (default)
@@ -274,7 +274,7 @@ glCullFace(GL_FRONT); // Cull front-facing polygons
 glCullFace(GL_FRONT_AND_BACK); // Rarely used, discards all polygons
 ```
 
-## Winding Order: CW vs CCW
+### Winding Order: CW vs CCW
 
 OpenGL determines if a face is front- or back-facing based on vertex winding order (the order vertices are defined in a triangle):
 
