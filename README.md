@@ -217,7 +217,6 @@ This matrix transforms world coordinates into camera/view space.
 
 
 ### mouseUpdate
-<br></br>
 
 ```cpp
 void Camera::mouseUpdate(const glm::vec2& newMousePosition) {
