@@ -7,8 +7,6 @@ Description
 - It aims to share my work on such things and how to apply math to solve real-world problems
 - Also I will paste some explanations about some parts of the process
 
-## OpenGL
-
 Shaders
 -
 
