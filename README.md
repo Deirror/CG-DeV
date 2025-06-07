@@ -1,11 +1,13 @@
-# OpenGL Collection
+# Computer Graphics Development
 
 Description
 -
 
-- This repo contains some computer graphics development(*CGD*) projects, using ***OpenGL***
+- This repo contains some computer graphics development(*CGD*) projects, using ***OpenGL*** and techniques like ray tracing(especially path tracing)
 - It aims to share my work on such things and how to apply math to solve real-world problems
 - Also I will paste some explanations about some parts of the process
+
+## OpenGL
 
 Shaders
 -
