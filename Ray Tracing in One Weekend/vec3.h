@@ -21,6 +21,10 @@ public:
     vec3& operator*=(double t);
     vec3& operator/=(double t);
 
+    static vec3 random(); 
+
+    static vec3 random(double min, double max);
+
     double length() const;
     double length_squared() const;
 
@@ -34,6 +38,8 @@ public:
     friend double dot(const vec3& u, const vec3& v);
     friend vec3 cross(const vec3& u, const vec3& v);
     friend vec3 unit_vector(const vec3& v);
+    friend vec3 random_unit_vector();
+    friend vec3 random_on_hemisphere(const vec3& normal);
 };
 
 using point3 = vec3;
