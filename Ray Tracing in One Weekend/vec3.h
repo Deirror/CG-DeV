@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <cmath>
+#include "rand.h"
 
 class vec3 {
 public:
@@ -71,4 +72,12 @@ inline vec3 refract(const vec3& uv, const vec3& n, double etai_over_etat) {
     vec3 r_out_perp =  etai_over_etat * (uv + cos_theta*n);
     vec3 r_out_parallel = -std::sqrt(std::fabs(1.0 - r_out_perp.length_squared())) * n;
     return r_out_perp + r_out_parallel;
+}
+
+inline vec3 random_in_unit_disk() {
+    while (true) {
+        auto p = vec3(random_double(-1,1), random_double(-1,1), 0);
+        if (p.length_squared() < 1)
+            return p;
+    }
 }
