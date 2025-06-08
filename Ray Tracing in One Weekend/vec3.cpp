@@ -92,7 +92,7 @@ vec3 vec3::random(double min, double max) {
     return vec3(random_double(min,max), random_double(min,max), random_double(min,max));
 }
 
- vec3 random_unit_vector() {
+vec3 random_unit_vector() {
     while (true) {
         auto p = vec3::random(-1,1);
         auto lensq = p.length_squared();

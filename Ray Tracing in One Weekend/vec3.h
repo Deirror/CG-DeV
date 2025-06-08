@@ -38,8 +38,7 @@ public:
     friend double dot(const vec3& u, const vec3& v);
     friend vec3 cross(const vec3& u, const vec3& v);
     friend vec3 unit_vector(const vec3& v);
-    friend vec3 random_unit_vector();
-    friend vec3 random_on_hemisphere(const vec3& normal);
+    
 };
 
 using point3 = vec3;
@@ -54,3 +53,6 @@ vec3 operator/(const vec3& v, double t);
 double dot(const vec3& u, const vec3& v);
 vec3 cross(const vec3& u, const vec3& v);
 vec3 unit_vector(const vec3& v);
+
+vec3 random_unit_vector();
+vec3 random_on_hemisphere(const vec3& normal);
