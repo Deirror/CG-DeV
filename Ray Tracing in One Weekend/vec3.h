@@ -1,6 +1,7 @@
 #pragma once
 
 #include <iostream>
+#include <cmath>
 
 class vec3 {
 public:
@@ -39,6 +40,10 @@ public:
     friend vec3 cross(const vec3& u, const vec3& v);
     friend vec3 unit_vector(const vec3& v);
     
+    inline bool near_zero() const {
+        auto s = 1e-8;
+        return (std::fabs(e[0]) < s) && (std::fabs(e[1]) < s) && (std::fabs(e[2]) < s);
+    }
 };
 
 using point3 = vec3;
@@ -56,3 +61,7 @@ vec3 unit_vector(const vec3& v);
 
 vec3 random_unit_vector();
 vec3 random_on_hemisphere(const vec3& normal);
+
+inline vec3 reflect(const vec3& v, const vec3& n) {
+    return v - 2*dot(v,n)*n;
+}

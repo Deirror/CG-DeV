@@ -5,6 +5,7 @@
 #include "color.h"
 #include "hittable.h"
 #include "interval.h"
+#include "material.h"
 
 class camera {
   public:
