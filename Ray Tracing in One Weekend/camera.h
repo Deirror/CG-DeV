@@ -14,6 +14,11 @@ class camera {
     int    samples_per_pixel = 10;
     int    max_depth         = 10;
 
+    double vfov = 90;
+    point3 lookfrom = point3(0,0,0);   
+    point3 lookat   = point3(0,0,-1);
+    vec3   vup      = vec3(0,1,0);   
+
     void render(const hittable& world);
 
   private:
@@ -23,6 +28,8 @@ class camera {
     point3 pixel00_loc;    
     vec3   pixel_delta_u;  
     vec3   pixel_delta_v;  
+
+    vec3   u, v, w;
 
     void initialize();
     color ray_color(const ray& r, int depth, const hittable& world) const;

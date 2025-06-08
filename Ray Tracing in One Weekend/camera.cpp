@@ -3,25 +3,35 @@
 #include <iostream>
 #include "rand.h"
 
+inline double degrees_to_radians(double degrees) {
+    return degrees * 3.14 / 180.0;
+}
+
 void camera::initialize() {
     image_height = int(image_width / aspect_ratio);
     if (image_height < 1) image_height = 1;
 
     pixel_samples_scale = 1.0 / samples_per_pixel;
 
-    center = point3(0, 0, 0);
+    center = lookfrom;
 
-    double focal_length = 1.0;
-    double viewport_height = 2.0;
+    auto focal_length = (lookfrom - lookat).length();
+    auto theta = degrees_to_radians(vfov);
+    auto h = std::tan(theta/2);
+    auto viewport_height = 2 * h * focal_length;
     double viewport_width = viewport_height * (double(image_width) / image_height);
 
-    vec3 viewport_u = vec3(viewport_width, 0, 0);
-    vec3 viewport_v = vec3(0, -viewport_height, 0);
+    w = unit_vector(lookfrom - lookat);
+    u = unit_vector(cross(vup, w));
+    v = cross(w, u);
+
+    vec3 viewport_u = viewport_width * u; 
+    vec3 viewport_v = viewport_height * -v; 
 
     pixel_delta_u = viewport_u / image_width;
     pixel_delta_v = viewport_v / image_height;
 
-    point3 viewport_upper_left = center - vec3(0, 0, focal_length) - viewport_u/2 - viewport_v/2;
+    auto viewport_upper_left = center - (focal_length * w) - viewport_u/2 - viewport_v/2;
     pixel00_loc = viewport_upper_left + 0.5 * (pixel_delta_u + pixel_delta_v);
 }
 
