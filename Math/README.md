@@ -30,19 +30,6 @@ All transformations in object space are represented using **vectors and matrices
 
 > In practice, all of the above are combined into a single **4×4 homogeneous matrix**.
 
-### Homogeneous Transform Example
-
-\[
-T = 
-\begin{bmatrix}
-R & t \\
-0 & 1
-\end{bmatrix}, \quad
-p' = T \cdot p_h
-\]
-
-where `p_h` is the point `p` in homogeneous coordinates `[x, y, z, 1]`.
-
 ---
 
 ### Transformation Hierarchy
@@ -55,15 +42,6 @@ Transformations occur in this order:
    - Apply the camera (world-to-view) matrix.
 3. **View Space → Clip Space**
    - Apply the projection matrix.
-
-\[
-p_{clip} = P \cdot V \cdot M \cdot p_{object}
-\]
-
-Where:
-- `M` = model (object-to-world)
-- `V` = view (world-to-camera)
-- `P` = projection (camera-to-clip)
 
 ---
 
